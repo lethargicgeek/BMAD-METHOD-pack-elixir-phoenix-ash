@@ -44,3 +44,8 @@ test-project-install/*
 sample-project/*
 flattened-codebase.xml
 *.stats.md
+/.idea/.gitignore
+/.idea/BMAD-METHOD-pack-elixir-phoenix-ash.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/vcs.xml

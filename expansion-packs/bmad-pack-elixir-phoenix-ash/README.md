@@ -143,7 +143,7 @@ Optimized templates for:
 ## Configuration
 
 The pack can be configured in `config.yaml`:
-- `slashPrefix`: Command prefix (default: `bmadash`)
+- `slashPrefix`: Command prefix (default: `bmad-eliphoash`)
 - `version`: Pack version
 - Custom agent behaviors
 
