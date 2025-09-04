@@ -1,0 +1,72 @@
+name: Story to Implementation Workflow
+description: Complete workflow from user story to implemented feature
+
+steps:
+  - id: initialize
+    name: Initialize Project Structure
+    command: /init
+    description: Create folder structure and templates
+    
+  - id: create_story
+    name: Create User Story
+    description: User provides story in given_user_story_prompt.md
+    manual: true
+    
+  - id: update_checklist
+    name: Update Story Checklist
+    command: /execute_story_updates
+    description: Add new story to tracking checklist
+    depends_on: [create_story]
+    
+  - id: generate_specs
+    name: Generate Specifications
+    command: /execute_specs_from_stories
+    description: Run all agents to create specification documents (documentation only)
+    depends_on: [update_checklist]
+    agents:
+      - feature-analyst
+      - product-owner
+      - architect-designer
+      - acceptance-tester
+    
+  - id: review_specs
+    name: Review Specifications
+    description: Team reviews generated specifications
+    manual: true
+    depends_on: [generate_specs]
+    
+  - id: implement_ash_resources
+    name: Implement Ash Resources
+    description: Create Ash resources based on architecture design
+    manual: true
+    depends_on: [review_specs]
+    
+  - id: implement_phoenix_components
+    name: Implement Phoenix Components
+    description: Create LiveView components and contexts
+    manual: true
+    depends_on: [implement_ash_resources]
+    
+  - id: write_tests
+    name: Write Tests
+    description: Implement acceptance tests
+    manual: true
+    depends_on: [implement_phoenix_components]
+    
+  - id: run_tests
+    name: Run Test Suite
+    command: mix test
+    description: Execute all tests
+    depends_on: [write_tests]
+    
+  - id: update_completion
+    name: Mark Story Complete
+    command: /execute_story_updates
+    description: Update checklist with completion status
+    depends_on: [run_tests]
+
+outputs:
+  - Implemented Ash resources
+  - Phoenix LiveView components
+  - Complete test coverage
+  - Updated documentation

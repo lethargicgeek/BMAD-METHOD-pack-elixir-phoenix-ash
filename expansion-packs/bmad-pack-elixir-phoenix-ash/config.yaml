@@ -1,0 +1,7 @@
+# <!-- Powered by BMAD™ Core -->
+name: bmad-pack-elixir-phoenix-ash
+version: 1.1.0
+short-title: Elixir Phoenix Ash Pack
+description: Elixir Phoenix & Ash Framework expansion pack for BMad Method
+author: bmad-team
+slashPrefix: bmadash
